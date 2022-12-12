@@ -1,0 +1,40 @@
+server:
+  port: '80'
+#  servlet:
+#    context-path: /commercefox
+spring:
+  datasource:
+    url: 'jdbc:mysql://commercefoxdb.c9dlrhdf09ee.ap-south-1.rds.amazonaws.com:3306/commercefox'
+    username: root
+    password: 'commercefox'
+#    hikari:
+#      minimum-idle: 1
+#      maximum-pool-size: 2
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+  main:
+    allow-circular-references: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 746131078487-jlj0tlnk4hes4hg7f28n7ujfr56tu8fo.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - email
+              - profile
+          facebook:
+            client-id: 447458557468930
+            client-secret: b04f6f81ff155a894570a9db46d5997e
+            scope:
+              - email
+              - public_profile

@@ -1,0 +1,74 @@
+2022-10-25 19:14:39.201  INFO 36276 --- [main] c.e.admin.EcommerceBackEndApplication    : Starting EcommerceBackEndApplication using Java 18.0.2 on Midlaj with PID 36276 (E:\Brocamp\week 07\SpingBoot-Ecommerce\EcommerceProject\EcommerceWebParent\EcommerceBackEnd\target\classes started by LENOVO in E:\Brocamp\week 07\SpingBoot-Ecommerce\EcommerceProject)
+2022-10-25 19:14:39.207  INFO 36276 --- [main] c.e.admin.EcommerceBackEndApplication    : No active profile set, falling back to 1 default profile: "default"
+2022-10-25 19:14:40.939  INFO 36276 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-25 19:14:41.078  INFO 36276 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 115 ms. Found 2 JPA repository interfaces.
+2022-10-25 19:14:42.419  INFO 36276 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-10-25 19:14:42.441  INFO 36276 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-25 19:14:42.442  INFO 36276 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-25 19:14:42.769  INFO 36276 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/admin]  : Initializing Spring embedded WebApplicationContext
+2022-10-25 19:14:42.770  INFO 36276 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3426 ms
+2022-10-25 19:14:43.138  INFO 36276 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-25 19:14:43.286  INFO 36276 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-25 19:14:43.684  INFO 36276 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-25 19:14:44.042  INFO 36276 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-25 19:14:45.130  INFO 36276 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-25 19:14:45.173  INFO 36276 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-10-25 19:14:46.870  INFO 36276 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-25 19:14:46.888  INFO 36276 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-25 19:14:46.982  WARN 36276 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-25 19:14:47.973  WARN 36276 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/images/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-10-25 19:14:47.974  INFO 36276 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/images/**']
+2022-10-25 19:14:47.975  WARN 36276 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/js/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-10-25 19:14:47.975  INFO 36276 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/js/**']
+2022-10-25 19:14:47.976  WARN 36276 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/webjars/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-10-25 19:14:47.976  INFO 36276 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/webjars/**']
+2022-10-25 19:14:47.976  WARN 36276 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/assets/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-10-25 19:14:47.976  INFO 36276 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/assets/**']
+2022-10-25 19:14:48.073  INFO 36276 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@13f7c165, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@655f92a1, org.springframework.security.web.context.SecurityContextPersistenceFilter@303db609, org.springframework.security.web.header.HeaderWriterFilter@22c0344e, org.springframework.security.web.csrf.CsrfFilter@644f6e89, org.springframework.security.web.authentication.logout.LogoutFilter@55e88bc, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@66ab088c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6dbdeb69, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6b4a2887, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@43312512, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1d2d793d, org.springframework.security.web.session.SessionManagementFilter@745c8a04, org.springframework.security.web.access.ExceptionTranslationFilter@c31419f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1e033801]
+2022-10-25 19:14:48.367  INFO 36276 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-10-25 19:14:49.427  INFO 36276 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/admin'
+2022-10-25 19:14:49.449  INFO 36276 --- [main] c.e.admin.EcommerceBackEndApplication    : Started EcommerceBackEndApplication in 11.233 seconds (JVM running for 13.157)
+2022-10-25 19:21:45.895  INFO 36276 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/admin]  : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-25 19:21:45.895  INFO 36276 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-25 19:21:45.918  INFO 36276 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 22 ms
+2022-10-25 19:38:05.467  INFO 36276 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-25 19:38:05.542  INFO 36276 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-25 19:38:05.696  INFO 36276 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-25 19:38:21.889  INFO 81140 --- [main] c.e.admin.EcommerceBackEndApplication    : Starting EcommerceBackEndApplication using Java 18.0.2 on Midlaj with PID 81140 (E:\Brocamp\week 07\SpingBoot-Ecommerce\EcommerceProject\EcommerceWebParent\EcommerceBackEnd\target\classes started by LENOVO in E:\Brocamp\week 07\SpingBoot-Ecommerce\EcommerceProject)
+2022-10-25 19:38:21.896  INFO 81140 --- [main] c.e.admin.EcommerceBackEndApplication    : No active profile set, falling back to 1 default profile: "default"
+2022-10-25 19:38:23.472  INFO 81140 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-25 19:38:23.588  INFO 81140 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 97 ms. Found 2 JPA repository interfaces.
+2022-10-25 19:38:24.958  INFO 81140 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-10-25 19:38:24.983  INFO 81140 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-25 19:38:24.984  INFO 81140 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-25 19:38:25.315  INFO 81140 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/admin]  : Initializing Spring embedded WebApplicationContext
+2022-10-25 19:38:25.316  INFO 81140 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3201 ms
+2022-10-25 19:38:25.814  INFO 81140 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-25 19:38:25.953  INFO 81140 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-25 19:38:26.385  INFO 81140 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-25 19:38:26.654  INFO 81140 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-25 19:38:27.486  INFO 81140 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-25 19:38:27.529  INFO 81140 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-10-25 19:38:29.420  INFO 81140 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-25 19:38:29.446  INFO 81140 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-25 19:38:29.586  WARN 81140 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-25 19:38:31.001  WARN 81140 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/images/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-10-25 19:38:31.002  INFO 81140 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/images/**']
+2022-10-25 19:38:31.003  WARN 81140 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/js/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-10-25 19:38:31.004  INFO 81140 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/js/**']
+2022-10-25 19:38:31.004  WARN 81140 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/webjars/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-10-25 19:38:31.004  INFO 81140 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/webjars/**']
+2022-10-25 19:38:31.004  WARN 81140 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/assets/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-10-25 19:38:31.005  INFO 81140 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/assets/**']
+2022-10-25 19:38:31.140  INFO 81140 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@57fec63f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7a2fd94c, org.springframework.security.web.context.SecurityContextPersistenceFilter@a238a8e, org.springframework.security.web.header.HeaderWriterFilter@59d29065, org.springframework.security.web.csrf.CsrfFilter@680937c9, org.springframework.security.web.authentication.logout.LogoutFilter@334d825c, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7d60bd5a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7fcfe065, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@325e03b, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@1d2d793d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@637c8632, org.springframework.security.web.session.SessionManagementFilter@303db609, org.springframework.security.web.access.ExceptionTranslationFilter@7267006e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1c25deb0]
+2022-10-25 19:38:31.552  INFO 81140 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-10-25 19:38:32.907  INFO 81140 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/admin'
+2022-10-25 19:38:32.930  INFO 81140 --- [main] c.e.admin.EcommerceBackEndApplication    : Started EcommerceBackEndApplication in 12.101 seconds (JVM running for 14.264)
+2022-10-25 20:20:55.339  WARN 81140 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=34m27s667ms207µs700ns).
+2022-10-25 22:09:51.242  INFO 81140 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/admin]  : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-25 22:09:51.251  INFO 81140 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-25 22:09:51.296  INFO 81140 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 44 ms
+2022-10-25 22:09:51.905  WARN 81140 --- [http-nio-8080-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [135] milliseconds.
+2022-10-25 22:21:55.106  INFO 81140 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-25 22:21:55.199  INFO 81140 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-25 22:21:55.256  INFO 81140 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

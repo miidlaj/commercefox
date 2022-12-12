@@ -1,0 +1,237 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel4">Customer Details</h5>
+    <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+    ></button>
+</div>
+
+<div class="modal-body">
+    <div class="col-xl-12">
+        <h6 class="text-muted">Customer Details</h6>
+        <div class="nav-align-top mb-4">
+            <ul class="nav nav-tabs mb-3 nav-fill" role="tablist">
+                <li class="nav-item">
+                    <button
+                            type="button"
+                            class="nav-link active"
+                            role="tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#navs-pills-justified-general"
+                            aria-controls="navs-pills-justified-general"
+                            aria-selected="true"
+                    >General</button>
+                </li>
+                <li class="nav-item">
+                    <button
+                            type="button"
+                            class="nav-link"
+                            role="tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#navs-pills-justified-address"
+                            aria-controls="navs-pills-justified-address"
+                            aria-selected="false"
+                    >Address
+                    </button>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="navs-pills-justified-general" role="tabpanel">
+
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label"
+                               for="email">Customer Id</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <span class="input-group-text"><i class="bx bx-envelope"></i></span>
+                                <input aria-describedby="id"
+                                       readonly
+                                       class="form-control"
+                                       th:value="${customer.id}"
+                                       type="text"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname2">Full
+                            Name</label>
+                        <div class="col-sm-10">
+
+                            <div class="input-group">
+                              <span class="input-group-text" id="basic-icon-default-fullname2"
+                              ><i class="bx bx-user-circle"></i
+                              ></span>
+                                <input aria-label="First name"
+                                       readonly
+                                       th:value="${customer.firstName}"
+                                       class="form-control"
+                                       type="text"/>
+                                <input aria-label="Last name"
+                                       readonly
+                                       th:value="${customer.lastName}"
+                                       class="form-control"
+                                       type="text"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label"
+                               for="email">Email</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <span class="input-group-text"><i class="bx bx-envelope"></i></span>
+                                <input aria-describedby="email"
+                                       readonly
+                                       class="form-control"
+                                       th:value="${customer.email}"
+                                       type="email"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Enabled</label>
+                        <div class="col-sm-10">
+                            <div class="col-md">
+                                <div class="form-check mt-3">
+                                    <input th:checked="${customer.enabled}"
+                                           class="form-check-input" type="checkbox" value="" id="inStock" onclick="return false;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-2 form-label"
+                        >Phone Number</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <input
+                                        class="form-control"
+                                        readonly
+                                        th:value="${customer.phoneNumber}"
+                                        type="text"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Created Time</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                               <span th:text="${#dates.format(customer.createdTime, 'yyyy-MM-dd HH:mm:ss')}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="navs-pills-justified-address" role="tabpanel">
+
+                    <div class="row mb-3">
+                        <label class="col-sm-2 form-label"
+                        >Address Line 1</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <input
+                                        class="form-control"
+                                        readonly
+                                        th:value="${customer.addressLine1}"
+                                        type="text"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-2 form-label"
+                        >Address Line 2</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <input
+                                        class="form-control"
+                                        readonly
+                                        th:value="${customer.addressLine2}"
+                                        type="text"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row mb-3">
+                        <label class="col-sm-2 form-label"
+                        >City</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <input
+                                        class="form-control"
+                                        readonly
+                                        th:value="${customer.city}"
+                                        type="text"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-2 form-label"
+                        >Country</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <input
+                                        class="form-control"
+                                        readonly
+                                        th:value="${customer.country.name}"
+                                        type="text"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-2 form-label"
+                        >State/Provinces</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <input
+                                        class="form-control"
+                                        readonly
+                                        th:value="${customer.state}"
+                                        type="text"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-2 form-label"
+                        >Postal Code</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <input
+                                        class="form-control"
+                                        readonly
+                                        th:value="${customer.postalCode}"
+                                        type="text"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+        Close
+    </button>
+    <a type="button" class="btn btn-primary" th:href="@{'/customers/edit/' + ${customer.id}}">Edit</a>
+</div>
