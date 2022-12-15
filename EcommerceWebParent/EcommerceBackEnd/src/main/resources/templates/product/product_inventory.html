@@ -16,32 +16,7 @@
 <style>
 
     .mydiv {
-        margin-top: 50px;
         margin-bottom: 50px
-    }
-
-    .cross {
-        font-size: 10px
-    }
-
-    .padding-0 {
-        padding-right: 5px;
-        padding-left: 5px
-    }
-
-    .img-style {
-        margin-left: -11px;
-        box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
-        border-radius: 5px;
-        max-width: 104% !important
-    }
-
-    .m-t-20 {
-        margin-top: 20px
-    }
-
-    .bbb_background {
-        background-color: #E0E0E0 !important
     }
 
     .ribbon {
@@ -107,14 +82,11 @@
         box-sizing: border-box
     }
 
-    .bbb_deals_featured {
-        width: 100%
-    }
 
     .bbb_deals {
         width: 100%;
         margin-right: 7%;
-        height: 350px;
+        height: 300px;
         padding-top: 80px;
         padding-left: 25px;
         padding-right: 25px;
@@ -128,7 +100,7 @@
         position: absolute;
         top: 10px;
         left: 22px;
-        font-size: 18px;
+        font-size: 12px;
         font-weight: 500;
         color: #000000
     }
@@ -148,7 +120,7 @@
     }
 
     .bbb_deals_image img {
-        width: 100%
+        max-height: 75px;
     }
 
     .bbb_deals_content {
@@ -156,31 +128,18 @@
     }
 
     .bbb_deals_item_category a {
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 400;
         color: rgba(0, 0, 0, 0.5)
     }
-
-    .bbb_deals_item_price_a {
-        font-size: 14px;
-        font-weight: 400;
-        color: rgba(0, 0, 0, 0.6)
-    }
-
     .bbb_deals_item_price_a strike {
         color: red
     }
 
     .bbb_deals_item_name {
-        font-size: 18px;
+        font-size: 12px;
         font-weight: 400;
         color: #000000
-    }
-
-    .bbb_deals_item_price {
-        font-size: 24px;
-        font-weight: 500;
-        color: #6d6e73
     }
 
     .available {
@@ -215,11 +174,7 @@
             font-size: 16px
         }
 
-        .bbb_deals_slider_nav_container {
-            right: 5px
-        }
-
-        .bbb_deals_item_name, .bbb_deals_item_price {
+        .bbb_deals_item_name {
             font-size: 20px
         }
     }
@@ -292,13 +247,15 @@
                             <div class="row">
 
                                 <th:block th:each="product : ${listProducts}">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 pt-2">
                                         <!-- bbb_deals -->
                                         <div class="bbb_deals">
                                             <div class="ribbon ribbon-top-right">
-                                                <span>
-                                                    <i class="bx bx-plus text-success"></i>
-                                                </span>
+                                                <a class="link-add" th:pid="${product.id}" th:currentStock="${product.stock}" th:href="@{'/products/inventory/' + ${product.id}}">
+                                                    <span>
+                                                        <i class="bx bx-plus text-success"></i>
+                                                    </span>
+                                                </a>
                                             </div>
                                             <div class="bbb_deals_title text-success" th:if="${product.inStock}">
                                                 InStock
@@ -309,8 +266,7 @@
                                             <div class="bbb_deals_slider_container">
                                                 <div class=" bbb_deals_item">
                                                     <div class="bbb_deals_image">
-                                                        <img
-                                                                alt="" th:src="@{${product.mainImagePath}}"></div>
+                                                        <img class="img-fluid w-75" alt="" th:src="@{${product.mainImagePath}}"></div>
                                                     <div class="bbb_deals_content">
                                                         <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
                                                             <div class="bbb_deals_item_category"><a href="#">[[${product.category.name}]]</a></div>
@@ -321,8 +277,10 @@
 
                                                         </div>
                                                         <div class="available">
-                                                            <div class="available_line d-flex flex-row justify-content-start">
-                                                                <div class="available_title">Available: <span>[[${product.stock}]]</span>
+                                                            <div class="available_line d-flex flex-row justify-content-between">
+                                                                <div class="available_title">Available:
+                                                                    <span th:if="${product.inStock == true}" th:id="${'available' + product.id}" class="badge bg-label-success">[[${product.stock}]]</span>
+                                                                    <span th:unless="${product.inStock == true}" th:id="${'available' + product.id}" class="badge bg-label-danger">[[${product.stock}]]</span>
                                                                 </div>
                                                                 <div class="col-xs ml-4">
                                                                     <input type="text" class="product-detail-rating-star" dir="ltr" data-size="xs"
@@ -346,9 +304,42 @@
                     <div th:replace="modal :: modal_confirm">
                     </div>
 
-                    <div aria-hidden="true" class="modal fade " id="detailModal" tabindex="-1">
-                        <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal fade" id="stockAddModal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-sm" role="document">
                             <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel2">Add Stock</h5>
+                                    <button
+                                            type="button"
+                                            class="btn-close"
+                                            data-bs-dismiss="modal"
+                                            aria-label="Close"
+                                    ></button>
+                                </div>
+                                <form id="stock-add-form" th:action="@{/product/inventory/add_stock}" method="post">
+                                    <div class="modal-body">
+                                        <input type="hidden" name="id" id="product-id" value="">
+                                            <div class="row">
+                                                <div class="col mb-3">
+                                                    <label for="nameSmall" class="form-label">Stock</label>
+                                                    <input type="number" required id="stockCount" name="stock"  max="100" step="1" class="form-control" placeholder="Enter Stock Count" />
+                                                </div>
+                                            </div>
+
+                                        <div class="row">
+                                            <div class="col mb-3">
+                                                Available: <span id="current-stock" class="badge bg-label-secondary"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                            Cancel
+                                        </button>
+                                        <button type="submit" id="stock-add-button" class="btn btn-primary">Add</button>
+                                    </div>
+                                </form>
+
                             </div>
                         </div>
                     </div>
@@ -359,6 +350,11 @@
                     <hr class="my-5"/>
                 </div>
                 <!-- / Content -->
+
+                <!-- Modal -->
+                <div th:replace="modal :: modal">
+                </div>
+
 
 
                 <!-- Footer -->
@@ -385,7 +381,12 @@
 <link th:href="@{/rating-star/themes/krajee-svg/theme.css}" media="all" rel="stylesheet" type="text/css" />
 <script th:src="@{/rating-star/themes/krajee-svg/theme.js}"></script>
 
+<script type="text/javascript" th:src="@{/js/common_form.js}"></script>
+
 <script type="text/javascript">
+
+    var csrfHeaderName = "[[${_csrf.headerName}]]";
+    var csrfValue = "[[${_csrf.token}]]";
 
     $(".product-detail-rating-star").rating({
         displayOnly: true,
@@ -395,10 +396,42 @@
     });
 
     $(document).ready(function () {
-        // $(".delete-link").on("click", function (e) {
-        //     e.preventDefault();
-        //     showDeleteConfirmationModal($(this), 'product');
-        // });
+        contextPath = "[[@{/}]]";
+        $(".link-add").on("click", function (e){
+            e.preventDefault();
+            link = $(this);
+            productId = link.attr('pid');
+            currentStock = link.attr('currentStock')
+            $("#product-id").val(productId)
+            $("#current-stock").text(currentStock);
+            $("#stockAddModal").modal('show');
+        })
+
+        $("#stock-add-form").submit(function (form){
+            form.preventDefault();
+
+            productId = $("#product-id").val();
+            stock = $("#stockCount").val();
+
+
+            url = contextPath+"products/inventory/addStock/"+ productId + "/" + stock;
+            $.get(url,function (responseJSON){
+                if (responseJSON.includes("Can't Update Stock.")){
+                    console.log(responseJSON);
+                    $("#product-id").val('');
+                    $("#stockCount").val('');
+                    $("#stockAddModal").modal('hide');
+                    showWarningModal(responseJSON);
+                    return;
+                } else{
+                    $("#available" + productId).text(responseJSON)
+                }
+            }).done(function (){
+
+            }).fail(function (){
+                showErrorModal('Server Encountered')
+            })
+        })
 
         $(".link-detail").on("click", function (e) {
             e.preventDefault();
@@ -411,6 +444,7 @@
             $("#searchForm").submit();
         })
     });
+
 
     function clearFilter() {
         window.location = "[[@{/products/inventory}]]"

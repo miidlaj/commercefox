@@ -27,12 +27,14 @@ public class ProductRestController {
                 product.getDiscountPrice(), product.getCost());
     }
 
-    @GetMapping("/products/inventory/{productId}/{stock}")
+    @GetMapping("/products/inventory/addStock/{productId}/{stock}")
     public String addStockIn(@PathVariable Integer stock, @PathVariable Integer productId){
         try {
             return productService.updateStockCount(productId,stock);
         } catch (ProductNotFoundException e) {
             return e.getMessage();
+        } catch (Exception e){
+            return "Can't Update Stock. Some error occurred";
         }
     }
 

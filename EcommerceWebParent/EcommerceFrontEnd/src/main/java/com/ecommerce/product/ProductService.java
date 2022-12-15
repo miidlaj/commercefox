@@ -16,7 +16,6 @@ public class ProductService {
 
     public static final  int SEARCH_RESULT_PER_PAGE = 10;
 
-
     @Autowired private ProductRepository productRepository;
 
     public Page<Product> listByCategory(int pageNum, Integer categoryId){

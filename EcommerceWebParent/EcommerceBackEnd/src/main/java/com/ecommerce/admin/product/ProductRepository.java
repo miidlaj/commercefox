@@ -20,6 +20,10 @@ public interface ProductRepository extends PagingAndSortingRepository<Product,In
     @Modifying
     public void updateStockCount(Integer id, String stock);
 
+    @Query("UPDATE Product p SET p.inStock = ?2 WHERE p.id = ?1")
+    @Modifying
+    public void updateStockStatus(Integer id, boolean stock);
+
     public Long countById(Integer id);
 
     @Query("SELECT p FROM Product p WHERE p.name LIKE %?1%"

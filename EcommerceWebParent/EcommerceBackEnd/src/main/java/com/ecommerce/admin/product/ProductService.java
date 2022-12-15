@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 @Transactional
 public class ProductService {
 
-    public static final int PRODUCTS_PER_PAGE = 5;
+    public static final int PRODUCTS_PER_PAGE = 9;
 
     @Autowired
     private ProductRepository productRepository;
@@ -117,13 +117,20 @@ public class ProductService {
 
     public String updateStockCount(Integer productId, Integer stock) throws ProductNotFoundException {
         Integer newStock = null;
+        if (stock <= 0) return "Can't Update Stock. Give correct value";
         try {
             Product product = productRepository.findById(productId).get();
             Integer currentStock = Integer.parseInt(product.getStock());
             newStock = currentStock + stock;
+            if (newStock > 0) {
+                productRepository.updateStockStatus(productId, true);
+            } else if (newStock <= 0){
+                productRepository.updateStockStatus(productId, false);
+            }
             productRepository.updateStockCount(productId, String.valueOf(newStock));
+
         } catch (NoSuchElementException e) {
-            throw new ProductNotFoundException("Could not find any product with ID " + productId);
+            throw new ProductNotFoundException("Can't Update Stock. Could not find any product with ID " + productId);
         }
 
         return String.valueOf(newStock);

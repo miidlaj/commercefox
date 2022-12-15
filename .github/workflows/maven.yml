@@ -28,7 +28,7 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file EcommerceWebParent/EcommerceBackEnd/pom.xml
     - name: Terminate Port
-      run: sudo kill -9 $(sudo lsof -t -i:8080) &
+      run: sudo kill -9 $(sudo lsof -t -i:80) &
     - name: Execute Jar
       run: sudo java -jar /home/ubuntu/actions-runner/_work/commercefox/commercefox/EcommerceWebParent/EcommerceBackEnd/target/EcommerceBackEnd-0.0.1-SNAPSHOT.jar &
       
