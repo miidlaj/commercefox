@@ -353,9 +353,17 @@
 
                 <li class="menu-item" sec:authorize="hasAuthority('Admin')">
                     <a class="menu-link"
-                       th:href="@{/sales_report}">
-                        <i class="menu-icon tf-icons bx bx-cog"></i>
+                       th:href="@{/reports}">
+                        <i class="menu-icon tf-icons bx bxs-report"></i>
                         <div data-i18n="Support">Reports</div>
+                    </a>
+                </li>
+
+                <li class="menu-item" sec:authorize="hasAnyAuthority('Admin','Assistant')">
+                    <a class="menu-link"
+                       th:href="@{/banners}">
+                        <i class="menu-icon tf-icons bx bxs-report"></i>
+                        <div data-i18n="Support">Banners</div>
                     </a>
                 </li>
 

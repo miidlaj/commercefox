@@ -6,9 +6,10 @@ public class Constants {
 
     static {
         String bucketName = System.getenv("AWS_BUCKET_NAME");
+        System.out.println("bucket Name: " + bucketName);
         String region = System.getenv("AWS_REGION");
+        System.out.println("Region : " + region);
         String pattern = "https://%s.s3.%s.amazonaws.com";
-
         S3_BASE_URI = bucketName == null ? "" : String.format(pattern, bucketName, region);;
         System.out.println("Base URI is: " + S3_BASE_URI);
     }

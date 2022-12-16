@@ -1,7 +1,10 @@
 package com.ecommerce;
 
+import com.ecommerce.banner.BannerService;
 import com.ecommerce.cart.ShoppingCartService;
 import com.ecommerce.category.CategoryService;
+import com.ecommerce.common.Constants;
+import com.ecommerce.common.entity.Banner;
 import com.ecommerce.common.entity.CartItem;
 import com.ecommerce.common.entity.Category;
 import com.ecommerce.common.entity.Customer;
@@ -27,6 +30,8 @@ public class MainController {
 
 	@Autowired private ControllerHelper controllerHelper;
 
+	@Autowired private BannerService bannerService;
+
 	@GetMapping("")
 	public String viewHomePage(Model model, HttpServletRequest request) {
 
@@ -37,6 +42,8 @@ public class MainController {
 		List<Category> listNoParentCategories = categoryService.listNoParentCategories();
 
 		List<CartItem> cartItems = shoppingCartService.getCart(customer);
+
+		List<Banner> listBanners = bannerService.getAllBanners();
 
 
 		float estimatedPriceTotal = 0.0F;
@@ -52,14 +59,13 @@ public class MainController {
 			bigDealCategory.add(listCategories.get(rnd));
 		}
 
-
-
 		model.addAttribute("cartItems",cartItems);
 		model.addAttribute("estimatedPriceTotal",estimatedPriceTotal);
 		model.addAttribute("numberofItem",numberofItem);
 		model.addAttribute("listCategories",listCategories);
 		model.addAttribute("bigDealCategory",bigDealCategory);
 		model.addAttribute("listNoParentCategories",listNoParentCategories);
+		model.addAttribute("listBanners",listBanners);
 
 		return "index";
 	}

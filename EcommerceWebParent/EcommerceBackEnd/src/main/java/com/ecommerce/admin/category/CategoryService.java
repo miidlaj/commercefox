@@ -14,8 +14,6 @@ import java.util.*;
 public class CategoryService {
 
     public static final int ROOT_CATEGORIES_PER_PAGE =4;
-
-
     @Autowired
     private CategoryRepository categoryRepository;
 

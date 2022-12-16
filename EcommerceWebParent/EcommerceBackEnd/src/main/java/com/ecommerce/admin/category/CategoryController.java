@@ -2,6 +2,7 @@ package com.ecommerce.admin.category;
 
 import com.ecommerce.admin.AmazonS3Util;
 import com.ecommerce.admin.FileUploadUtil;
+import com.ecommerce.common.Constants;
 import com.ecommerce.common.entity.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -107,6 +108,7 @@ public class CategoryController {
         try {
             Category category = categoryService.get(id);
             List<Category> listCategories = categoryService.listCategoriesUsedInForm();
+
 
             model.addAttribute("category",category);
             model.addAttribute("listCategories",listCategories);

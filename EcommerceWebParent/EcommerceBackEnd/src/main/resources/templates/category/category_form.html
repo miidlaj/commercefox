@@ -138,7 +138,7 @@
                         <div class="input-group input-group-merge col">
                           <input type="hidden" th:field="*{image}" />
                           <span class="input-group-text"><i class="bx bx-user"></i></span>
-                          <input th:required="${category.imagePath == null}" class="form-control" id="fileImage" name="fileImage" type="file" accept="image/png, imaage/jpeg"/>
+                          <input class="form-control" id="fileImage" name="fileImage" type="file" accept="image/png, imaage/jpeg"/>
                         </div>
                         <div class="col mt-3">
                           <img th:src="@{${category.imagePath}}" alt="Image preview" class="img-fluid w-px-150 h-px-150" id="thumbnail">
