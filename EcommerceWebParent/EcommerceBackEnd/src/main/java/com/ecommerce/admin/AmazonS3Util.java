@@ -19,8 +19,7 @@ public class AmazonS3Util {
     private static final Logger LOGGER = LoggerFactory.getLogger(AmazonS3Util.class);
 
     static {
-        BUCKET_NAME = System.getenv("AWS_BUCKET_NAME");
-
+        BUCKET_NAME = System.getProperty("AWS_BUCKET_NAME");
     }
 
     public static List<String> listFolder(String folderName){
@@ -40,7 +39,6 @@ public class AmazonS3Util {
             listKeys.add(object.key());
 
         }
-
         return listKeys;
     }
 
