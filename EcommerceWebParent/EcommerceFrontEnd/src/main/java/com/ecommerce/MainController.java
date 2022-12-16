@@ -42,6 +42,8 @@ public class MainController {
 		List<Category> listNoParentCategories = categoryService.listNoParentCategories();
 
 		List<CartItem> cartItems = shoppingCartService.getCart(customer);
+		
+		System.out.println(Constants.S3_BASE_URI);
 
 		List<Banner> listBanners = bannerService.getAllBanners();
 
