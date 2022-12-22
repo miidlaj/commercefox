@@ -7,8 +7,11 @@ import com.ecommerce.common.entity.Category;
 import com.ecommerce.common.entity.Customer;
 import com.ecommerce.common.entity.product.Product;
 import com.ecommerce.common.entity.review.Review;
+import com.ecommerce.common.entity.setting.Setting;
 import com.ecommerce.review.ReviewService;
 import com.ecommerce.review.vote.ReviewVoteService;
+import com.ecommerce.setting.MenusSettingBag;
+import com.ecommerce.setting.SettingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -36,6 +39,9 @@ public class ProductController {
 
     @Autowired
     private ReviewVoteService reviewVoteService;
+
+    @Autowired
+    private SettingService settingService;
 
     @GetMapping("/c/{category_alias}")
     public String viewCategoryFirstPage(@PathVariable("category_alias") String alias,
@@ -85,6 +91,10 @@ public class ProductController {
     @GetMapping("/p/{product_alias}")
     public String viewProductDetail(@PathVariable("product_alias") String alias, Model model, HttpServletRequest request){
         try {
+            if (alias.equals("value_of_day")){
+                MenusSettingBag settings = settingService.getMenusSetting();
+                alias = settings.getValueOfTheDay();
+            }
             Product product = productService.getProduct(alias);
             List<Category> listCategoryParents = categoryService.getCategoryParents(product.getCategory());
             Page<Review> listReviews = reviewService.list3MostVotedReviewsByProduct(product);

@@ -74,27 +74,43 @@
 
 
                             <form class="js-validate" novalidate="novalidate" th:action="@{/login}" method="post">
+
                                 <!-- Form Group -->
-                                <div class="js-form-message form-group">
-                                    <label class="form-label" for="signinSrEmailExample3">Username or Email address
-                                        <span class="text-danger">*</span>
-                                    </label>
-                                    <input type="email" class="form-control" name="email" id="signinSrEmailExample3" placeholder="Username or Email address" aria-label="Username or Email address" required
-                                    data-msg="Please enter a valid email address."
-                                    data-error-class="u-has-error"
-                                    data-success-class="u-has-success">
+                                <div class="form-group">
+                                    <div class="js-form-message js-focus-state">
+                                        <label class="sr-only" for="signinEmail">Email</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="signinEmailLabel">
+                                                            <span class="fas fa-user"></span>
+                                                        </span>
+                                            </div>
+                                            <input type="email" class="form-control" name="email" id="signinEmail" placeholder="Email" aria-label="Email" aria-describedby="signinEmailLabel" required
+                                                   data-msg="Please enter a valid email address."
+                                                   data-error-class="u-has-error"
+                                                   data-success-class="u-has-success">
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-- End Form Group -->
 
                                 <!-- Form Group -->
-                                <div class="js-form-message form-group">
-                                    <label class="form-label" for="signinSrPasswordExample2">Password <span class="text-danger">*</span></label>
-                                    <input type="password" class="form-control" name="password" id="signinSrPasswordExample2" placeholder="Password" aria-label="Password" required
-                                    data-msg="Your password is invalid. Please try again."
-                                    data-error-class="u-has-error"
-                                    data-success-class="u-has-success">
+                                <div class="form-group">
+                                    <div class="js-form-message js-focus-state">
+                                        <label class="sr-only" for="signinPassword">Password</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="signinPasswordLabel">
+                                                        <span class="fas fa-lock"></span>
+                                                    </span>
+                                            </div>
+                                            <input type="password" class="form-control" name="password" id="signinPassword" placeholder="Password" aria-label="Password" aria-describedby="signinPasswordLabel" required
+                                                   data-msg="Your password is invalid. Please try again."
+                                                   data-error-class="u-has-error"
+                                                   data-success-class="u-has-success">
+                                        </div>
+                                    </div>
                                 </div>
-                                <!-- End Form Group -->
 
                                 <!-- Checkbox -->
                                 <div class="js-form-message mb-3">
@@ -155,7 +171,6 @@
             <span class="fas fa-arrow-up u-go-to__inner"></span>
         </a>
         <!-- End Go to Top -->
-
         <!-- JS Global Compulsory -->
         <script th:src="@{/assets/vendor/jquery/dist/jquery.min.js}"></script>
         <script th:src="@{/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js}"></script>
@@ -163,6 +178,7 @@
         <script th:src="@{/assets/vendor/bootstrap/bootstrap.min.js}"></script>
 
         <!-- JS Implementing Plugins -->
+        <script th:src="@{/assets/vendor/appear.js}"></script>
         <script th:src="@{/assets/vendor/jquery.countdown.min.js}"></script>
         <script th:src="@{/assets/vendor/hs-megamenu/src/hs.megamenu.js}"></script>
         <script th:src="@{/assets/vendor/svg-injector/dist/svg-injector.min.js}"></script>
@@ -171,6 +187,7 @@
         <script th:src="@{/assets/vendor/fancybox/jquery.fancybox.min.js}"></script>
         <script th:src="@{/assets/vendor/typed.js/lib/typed.min.js}"></script>
         <script th:src="@{/assets/vendor/slick-carousel/slick/slick.js}"></script>
+        <script th:src="@{/assets/vendor/appear.js}"></script>
         <script th:src="@{/assets/vendor/bootstrap-select/dist/js/bootstrap-select.min.js}"></script>
 
         <!-- JS Electro -->
@@ -185,11 +202,12 @@
         <script th:src="@{/assets/js/components/hs.fancybox.js}"></script>
         <script th:src="@{/assets/js/components/hs.onscroll-animation.js}"></script>
         <script th:src="@{/assets/js/components/hs.slick-carousel.js}"></script>
+        <script th:src="@{/assets/js/components/hs.quantity-counter.js}"></script>
         <script th:src="@{/assets/js/components/hs.show-animation.js}"></script>
         <script th:src="@{/assets/js/components/hs.svg-injector.js}"></script>
+        <script th:src="@{/assets/js/components/hs.scroll-nav.js}"></script>
         <script th:src="@{/assets/js/components/hs.go-to.js}"></script>
         <script th:src="@{/assets/js/components/hs.selectpicker.js}"></script>
-
 
         <!-- JS Plugins Init. -->
         <script>

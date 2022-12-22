@@ -11,6 +11,7 @@
 <head>
   <head th:replace="fragments  :: page_head(${pageTitle}, 'tag' )"/>
 
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.js"></script>
 
@@ -98,6 +99,18 @@
                           >Banner 3
                           </button>
                         </li>
+                        <li class="nav-item">
+                          <button
+                                  type="button"
+                                  class="nav-link"
+                                  role="tab"
+                                  data-bs-toggle="tab"
+                                  data-bs-target="#navs-pills-justified-fullwidth"
+                                  aria-controls="navs-pills-justified-fullwidth"
+                                  aria-selected="false"
+                          >Full Width
+                          </button>
+                        </li>
                       </ul>
                       <div class="tab-content">
                         <div class="tab-pane fade show active" id="navs-pills-justified-banner1" role="tabpanel">
@@ -108,7 +121,7 @@
                               <div class="col-sm-10 form-row">
                                 <small class="text-light fw-semibold">Can choose image upto 5 MB (Size: 416x420)</small>
                                 <div class="input-group input-group-merge col">
-                                  <input type="hidden" th:field="*{banner}" />
+                                  <input type="hidden" th:value="${banner1.banner}" name="banner1Image" />
                                   <div class="col">
                                     <input th:required="${banner1.bannerPath == null}" class="form-control" id="id_image1" name="id_image1" type="file" required accept="image/png, imaage/jpeg"/>
 
@@ -193,7 +206,7 @@
                               <div class="col-sm-10 form-row">
                                 <small class="text-light fw-semibold">Can choose image upto 5 MB (Size: 416x420)</small>
                                 <div class="input-group input-group-merge col">
-                                  <input type="hidden" th:field="*{banner}" />
+                                  <input type="hidden" th:value="${banner2.banner}" name="banner2Image" />
                                   <div class="col">
                                     <input class="form-control" id="id_image2" name="id_image2" type="file" required accept="image/png, imaage/jpeg"/>
 
@@ -229,7 +242,7 @@
                                 <div class="input-group input-group-merge">
                                   <input type="text"
                                          class="form-control"
-                                         placeholder="Price"
+                                         placeholder="Link"
                                          maxlength="512"
                                          minlength="8"
                                          th:field="*{link}"
@@ -277,7 +290,7 @@
                               <div class="col-sm-10 form-row">
                                 <small class="text-light fw-semibold">Can choose image upto 5 MB (Size: 416x420)</small>
                                 <div class="input-group input-group-merge col">
-                                  <input type="hidden" th:field="*{banner}" />
+                                  <input type="hidden" th:value="${banner3.banner}" name="banner3Image" />
                                   <div class="col">
                                     <input class="form-control" id="id_image3" name="id_image3" type="file" required accept="image/png, imaage/jpeg" content_type = "image/png"/>
 
@@ -313,7 +326,7 @@
                                 <div class="input-group input-group-merge">
                                   <input type="text"
                                          class="form-control"
-                                         placeholder="Price"
+                                         placeholder="Link"
                                          maxlength="512"
                                          minlength="8"
                                          th:field="*{link}"
@@ -349,6 +362,91 @@
                             <div class="row">
                               <div class="col-sm-10">
                                 <button id="confirm-btn3" type="submit" class="btn btn-primary">Save</button>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+
+                        <div class="tab-pane fade" id="navs-pills-justified-fullwidth" role="tabpanel">
+                          <form th:object="${fullWidthBanner}" th:action="@{/banners/save_banner4}" method="post" enctype="multipart/form-data">
+                            <input type="hidden" th:field="*{id}">
+                            <div class="row mb-3">
+                              <label class="col-sm-2 col-form-label" for="fileImage">Full Width</label>
+                              <div class="col-sm-10 form-row">
+                                <small class="text-light fw-semibold">Can choose image upto 5 MB (Size: 416x420)</small>
+                                <div class="input-group input-group-merge col">
+                                  <input type="hidden" th:value="${fullWidthBanner.banner}" name="banner4Image" />
+                                  <div class="col">
+                                    <input class="form-control" id="id_image4" name="id_image4" type="file" required accept="image/png, imaage/jpeg" content_type = "image/png"/>
+
+                                    <!--//cropper js-->
+                                    <div id="image-box4" class="image-container"></div>
+                                    <button class="btn btn-outline-info" id="crop-btn4" style="width: 100%; margin-top: 10px; display: none;" type="button">Crop</button>
+                                  </div>
+
+                                </div>
+                                <div class="col mt-3">
+                                  <img th:src="@{${fullWidthBanner.bannerPath}}" alt="Photo preview" class="img-fluid w-px-150 h-px-150" id="thumbnail4">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row mb-3">
+                              <label class="col-sm-2 col-form-label">Price </label>
+                              <div class="col-sm-10">
+                                <div class="input-group input-group-merge">
+                                  <input type="text"
+                                         class="form-control"
+                                         minlength="1"
+                                         maxlength="8"
+                                         placeholder="Price"
+                                         th:field="*{price}"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="row mb-3">
+                              <label class="col-sm-2 col-form-label">Link </label>
+                              <div class="col-sm-10">
+                                <div class="input-group input-group-merge">
+                                  <input type="text"
+                                         class="form-control"
+                                         placeholder="Link"
+                                         maxlength="512"
+                                         minlength="8"
+                                         th:field="*{link}"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="row mb-3">
+                              <label class="col-sm-2 col-form-label">Title </label>
+                              <textarea
+                                      class="form-control"
+                                      th:field="*{title}"
+                                      required
+                                      minlength="5"
+                                      maxlength="512"
+                                      rows="5"
+                                      id="bannerTitle4"
+                              ></textarea>
+                            </div>
+                            <div class="row mb-3">
+                              <label class="col-sm-2 col-form-label">Description </label>
+                              <textarea
+                                      class="form-control"
+                                      th:field="*{description}"
+                                      required
+                                      minlength="5"
+                                      maxlength="512"
+                                      rows="5"
+                                      id="bannerDescription4"></textarea>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-sm-10">
+                                <button id="confirm-btn4" type="submit" class="btn btn-primary">Save</button>
                               </div>
                             </div>
                           </form>
@@ -392,6 +490,8 @@
     $('#bannerDescription2').richText({height : 100});
     $('#bannerTitle3').richText({height : 100});
     $('#bannerDescription3').richText({height : 100});
+    $('#bannerTitle4').richText({height : 100});
+    $('#bannerDescription4').richText({height : 100});
   });
 
   $(document).ready(function (){
@@ -399,21 +499,28 @@
       if (!checkFileSize(this)){
         return;
       }else{
-        cropImage('image-box1','crop-btn1','id_image1','confirm-btn1' ,'thumbnail1','img1');
+        cropImage('image-box1','crop-btn1','id_image1','confirm-btn1' ,'thumbnail1','img1', 416 / 420);
       }
     })
     $("#id_image2").change(function (){
       if (!checkFileSize(this)){
         return;
       }else{
-        cropImage('image-box2','crop-btn2','id_image2','confirm-btn2' ,'thumbnail2','img2');
+        cropImage('image-box2','crop-btn2','id_image2','confirm-btn2' ,'thumbnail2','img2', 416 / 420);
       }
     })
     $("#id_image3").change(function (){
       if (!checkFileSize(this)){
         return;
       }else{
-        cropImage('image-box3','crop-btn3','id_image3','confirm-btn3' ,'thumbnail3','img3');
+        cropImage('image-box3','crop-btn3','id_image3','confirm-btn3' ,'thumbnail3','img3', 416 / 420);
+      }
+    });
+    $("#id_image4").change(function (){
+      if (!checkFileSize(this)){
+        return;
+      }else{
+        cropImage('image-box4','crop-btn4','id_image4','confirm-btn4' ,'thumbnail4','img4', 1400 / 206);
       }
     })
   });

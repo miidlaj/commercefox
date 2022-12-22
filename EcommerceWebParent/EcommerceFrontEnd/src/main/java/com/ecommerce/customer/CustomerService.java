@@ -164,4 +164,20 @@ public class CustomerService {
         encodePassword(customer);
         customerRepository.save(customer);
     }
+
+    public String updatePasswordUsingCurrentPassword(String currentPassword, String newPassword , Customer customer) {
+        String passwordInDb = customer.getPassword();
+        boolean result = passwordEncoder.matches(currentPassword,passwordInDb);
+
+        if (result){
+            String encodedPassword = passwordEncoder.encode(newPassword);
+            customer.setPassword(encodedPassword);
+
+            return "Password Changed Successfully";
+        } else {
+            return "Invalid Current Password";
+        }
+
+
+    }
 }

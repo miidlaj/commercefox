@@ -1,5 +1,6 @@
 package com.ecommerce.customer;
 
+import com.ecommerce.ControllerHelper;
 import com.ecommerce.Utility;
 import com.ecommerce.common.entity.Country;
 import com.ecommerce.common.entity.Customer;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.mail.MessagingException;
@@ -33,6 +35,9 @@ public class CustomerController {
 
     @Autowired
     private SettingService settingService;
+
+    @Autowired
+    private ControllerHelper controllerHelper;
 
 
     @GetMapping("/register")
@@ -133,6 +138,27 @@ public class CustomerController {
         }else if ("checkout".equals(redirectOption)){
             redirectURL = "redirect:/address_book?redirect=checkout";
         }
+
+        return redirectURL;
+    }
+
+    @PostMapping("/updatePassword")
+    public String updatePassword(Model model,
+                                 HttpServletRequest request,
+                                 @RequestParam(name = "id") Integer customerId,
+                                 @RequestParam(name = "currentPassword") String currentPassword,
+                                 @RequestParam(name = "password") String newPassword,
+                                 RedirectAttributes redirectAttributes){
+
+        Customer customer = controllerHelper.getAuthenticatedCustomer(request);
+        String message = null;
+        if (customer.getId() == customerId){
+            message = customerService.updatePasswordUsingCurrentPassword(currentPassword, newPassword, customer);
+        }
+
+        redirectAttributes.addFlashAttribute("message", message);
+
+        String redirectURL = "redirect:/account_details";
 
         return redirectURL;
     }

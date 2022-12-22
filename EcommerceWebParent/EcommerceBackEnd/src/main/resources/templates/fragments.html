@@ -339,8 +339,7 @@
                     <li class="menu-item">
                         <a
                                 class="menu-link"
-                                href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-                                target="_blank"
+                                th:href="@{/menus}"
                         >
                             <i class="menu-icon tf-icons bx bx-menu"></i>
                             <div data-i18n="Support">Menus</div>
@@ -362,7 +361,7 @@
                 <li class="menu-item" sec:authorize="hasAnyAuthority('Admin','Assistant')">
                     <a class="menu-link"
                        th:href="@{/banners}">
-                        <i class="menu-icon tf-icons bx bxs-report"></i>
+                        <i class="menu-icon tf-icons bx bx-image"></i>
                         <div data-i18n="Support">Banners</div>
                     </a>
                 </li>

@@ -38,6 +38,11 @@ public class SettingService {
         return new PaymentSettingBag(settings);
     }
 
+    public MenusSettingBag getMenusSetting(){
+        List<Setting> settings = settingRepository.findByCategory(SettingCategory.MENUS);
+        return new MenusSettingBag(settings);
+    }
+
     public String getCurrencyCode(){
         Setting setting = settingRepository.findByKey("CURRENCY_ID");
         Integer currencyId = Integer.parseInt(setting.getValue());

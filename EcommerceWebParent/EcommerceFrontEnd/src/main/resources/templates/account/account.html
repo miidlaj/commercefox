@@ -3,7 +3,7 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
       xmlns:th="http://www.thymeleaf.org"
 >
-<head th:replace="fragments/common/head :: content"></head>
+<head th:replace="fragments/common/head :: content('none')"></head>
 
 
 <body>
@@ -31,7 +31,11 @@
 
     <section class="py-5 my-5 settings js-validate">
         <div class="container">
-            <div th:if="${message != null}" class="alert alert-success alert-dismissible" role="alert">
+            <div th:if="${message != null && message != 'Invalid Current Password'}" class="alert alert-success alert-dismissible" role="alert">
+                [[${message}]]
+                <button type="button" class="btn-close float-right" data-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <div th:if="${message != null && message == 'Invalid Current Password'}" class="alert alert-danger alert-dismissible" role="alert">
                 [[${message}]]
                 <button type="button" class="btn-close float-right" data-dismiss="alert" aria-label="Close"></button>
             </div>
@@ -70,33 +74,77 @@
 
                     </div>
                     <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
-                        <h3 class="mb-4">Password Settings</h3>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Old password</label>
-                                    <input type="password" class="form-control">
+                        <form class="js-validate" method="post" th:action="@{/updatePassword}" id="passwordUpdateForm">
+                            <input type="hidden" th:value="${customer.id}" name="id">
+                            <h3 class="mb-4">Password Settings</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="js-form-message js-focus-state">
+                                            <label class="sr-only">Current Password</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <span class="fas fa-lock"></span>
+                                                            </span>
+                                                </div>
+                                                <input type="password" class="form-control" name="currentPassword"minlength="8" maxlength="15"  placeholder="Password" aria-label="Password" aria-describedby="signupPasswordLabel" required
+                                                       data-msg="Your password is invalid. Please try again."
+                                                       data-error-class="u-has-error"
+                                                       data-success-class="u-has-success">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>New password</label>
-                                    <input type="password" class="form-control">
+                                    <div class="js-form-message js-focus-state">
+                                        <label class="sr-only">New Password</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="signupPasswordLabel">
+                                                                <span class="fas fa-lock"></span>
+                                                            </span>
+                                            </div>
+                                            <input type="password" class="form-control" name="password" id="signupPassword" minlength="8" maxlength="15" placeholder="Password" aria-label="Password" aria-describedby="signupPasswordLabel" required
+                                                   data-msg="Your password is invalid. Please try again."
+                                                   data-error-class="u-has-error"
+                                                   data-success-class="u-has-success">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
+                                </div>
+                                <!-- End Input -->
+
+                                <!-- Form Group -->
+                                <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Confirm new password</label>
-                                    <input type="password" class="form-control">
+                                    <div class="js-form-message js-focus-state">
+                                        <label class="sr-only">Confirm Password</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="signupConfirmPasswordLabel">
+                                                            <span class="fas fa-key"></span>
+                                                        </span>
+                                            </div>
+                                            <input type="password" class="form-control" name="confirmPassword" id="signupConfirmPassword" minlength="8" maxlength="15" placeholder="Confirm Password" aria-label="Confirm Password" aria-describedby="signupConfirmPasswordLabel" required
+                                                   data-msg="Password does not match the confirm password."
+                                                   data-error-class="u-has-error"
+                                                   data-success-class="u-has-success">
+                                        </div>
+                                    </div>
                                 </div>
+                                </div>
+
                             </div>
-                        </div>
-                        <div>
-                            <button class="btn btn-primary">Update</button>
-                            <button class="btn btn-light">Cancel</button>
-                        </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary">Update</button>
+                                <button type="reset" class="btn btn-light">Cancel</button>
+                            </div>
+
+                        </form>
                     </div>
                     </div>
                 </div>
@@ -193,9 +241,10 @@
     });
 
     function submitForm(form){
-        form.action = contextPath + 'update_account_details'
+        action = form.attr('action').val();
+        console.log("")
+        form.action = contextPath + action
         form.method = 'post'
-        console.log( form.attr('action').val());
         form.submit();
     }
 

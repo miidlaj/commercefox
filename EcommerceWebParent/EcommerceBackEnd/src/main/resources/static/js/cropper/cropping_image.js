@@ -1,4 +1,4 @@
-function cropImage(imageBox,cropBtn,idImage,confirmBtn ,thumbnail, img) {
+function cropImage(imageBox,cropBtn,idImage,confirmBtn ,thumbnail, img, aspectRatio) {
     // image-box is the id of the div element that will store our cropping image preview
     const imagebox = document.getElementById(imageBox)
 // crop-btn is the id of button that will trigger the event of change original file with cropped file.
@@ -36,7 +36,7 @@ function cropImage(imageBox,cropBtn,idImage,confirmBtn ,thumbnail, img) {
             scalable: false,
             zoomable: false,
             movable: false,
-            aspectRatio: 416 / 420
+            aspectRatio: aspectRatio
         })
 
         // When crop button is clicked this event will get triggered

@@ -13,9 +13,22 @@ public class BannerService {
     private BannerRepository bannerRepository;
 
 
-    public List<Banner> getAllBanners(){
-        List<Banner> banners = bannerRepository.findAll();
+    public List<Banner> getAllBanners() {
+        List<Banner> banners = bannerRepository.findFirst3Banners();
+
+//        for (Banner banner : banners) {
+//            if (banner.getId().equals(4)) {
+//                int index = banners.indexOf(banner);
+//                System.out.println(banners);
+//                banners.remove(index);
+//            }
+//        }
 
         return banners;
+    }
+
+    public Banner getFullWidthBanner(){
+        Banner banner = bannerRepository.findById(4).get();
+        return banner;
     }
 }

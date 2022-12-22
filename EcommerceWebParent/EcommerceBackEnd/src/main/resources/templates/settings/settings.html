@@ -11,6 +11,9 @@
 <head>
   <head th:replace="fragments  :: page_head(${pageTitle}, 'tag' )"/>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.js"></script>
+
   <link rel="stylesheet" href="https://www.jqueryscript.net/demo/Rich-Text-Editor-jQuery-RichText/richtext.min.css"/>
   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script ></script>
@@ -93,6 +96,18 @@
                                     class="nav-link"
                                     role="tab"
                                     data-bs-toggle="tab"
+                                    data-bs-target="#navs-pills-justified-menus"
+                                    aria-controls="navs-pills-justified-menus"
+                                    aria-selected="false"
+                            >Menus
+                            </button>
+                          </li>
+                          <li class="nav-item">
+                            <button
+                                    type="button"
+                                    class="nav-link"
+                                    role="tab"
+                                    data-bs-toggle="tab"
                                     data-bs-target="#navs-pills-justified-countries"
                                     aria-controls="navs-pills-justified-countries"
                                     aria-selected="false"
@@ -152,6 +167,9 @@
                           <div class="tab-pane fade show active" id="navs-pills-justified-general" role="tabpanel">
                             <div th:replace="settings/settings_general :: content"></div>
                           </div>
+                          <div class="tab-pane fade" id="navs-pills-justified-menus" role="tabpanel">
+                            <div th:replace="settings/settings_menus :: content"></div>
+                          </div>
                           <div class="tab-pane fade" id="navs-pills-justified-countries" role="tabpanel">
                             <div th:replace="settings/settings_countries :: content"></div>
                           </div>
@@ -202,10 +220,22 @@
   $(document).ready(function (){
     $('#customerVerificationContent').richText();
     $('#orderConfirmationContent').richText({height : 400});
+  });
 
-  })
+  $(document).ready(function (){
+    $("#ad_image").change(function (){
+      if (!checkFileSize(this)){
+        return;
+      }else{
+        cropImage('ad_image-box','ad_image_crop-btn','ad_image','confirm-btn' ,'thumbnail1','img1',328/357);
+      }
+    });
+  });
+
+
 </script>
 
+<script type="text/javascript" th:src="@{/js/cropper/cropping_image.js}"></script>
 <script type="text/javascript" th:src="@{/js/common_form.js}"></script>
 <script type="text/javascript" th:src="@{/js/countries_setting.js}"></script>
 <script type="text/javascript" th:src="@{/js/state_setting.js}"></script>

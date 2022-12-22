@@ -130,5 +130,29 @@ public class SettingController {
         return "redirect:/settings#navs-pills-justified-payment";
     }
 
+    @PostMapping("/settings/save_menus")
+    public String saveMenusSettings(@RequestParam("ad_image")MultipartFile multipartFile,HttpServletRequest request,
+                                           RedirectAttributes redirectAttributes) throws IOException {
+
+        List<Setting> menusSettings = settingService.getMenusSettings();
+
+        MenusSettingBag settingBag = settingService.getMenusSettingBag();
+
+        if (!multipartFile.isEmpty()){
+            String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+            String value = "/ad-image/" + fileName;
+            settingBag.updateAdImage(value);
+            String uploadDir = "ad-image";
+            AmazonS3Util.removeFolder(uploadDir);
+            AmazonS3Util.uploadFile(uploadDir, fileName, multipartFile.getInputStream());
+        }
+
+        updateSettingValueFromForm(request, menusSettings);
+
+        redirectAttributes.addFlashAttribute("message","Menus settings have been saved.");
+
+        return "redirect:/settings";
+    }
+
 
 }

@@ -95,7 +95,7 @@ public class CheckoutController {
     }
 
     @PostMapping("/place_order")
-    public String placeOrder(HttpServletRequest request) throws MessagingException, UnsupportedEncodingException {
+    public String placeOrder(HttpServletRequest request, Model model) throws MessagingException, UnsupportedEncodingException {
 
         String paymentType = request.getParameter("paymentMethod");
         PaymentMethod paymentMethod = PaymentMethod.valueOf(paymentType);
@@ -122,6 +122,7 @@ public class CheckoutController {
         cartService.deleteByCustomer(customer);
         sendOrderConfirmationEmail(request, createdOrder);
 
+        model.addAttribute("orderId", createdOrder.getId());
 
         return "checkout/order_completed";
     }
@@ -169,7 +170,7 @@ public class CheckoutController {
         String message = null;
         try {
             if (payPalService.validateOrder(orderId)){
-                return placeOrder(request);
+                return placeOrder(request, model);
             }else{
                 pageTitle = "Checkout failure";
                 message = "Error : Transaction could not be completed because order information is invalid!";

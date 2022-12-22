@@ -30,6 +30,16 @@ public class SettingService {
 
     }
 
+    public MenusSettingBag getMenusSettingBag(){
+        List<Setting> settings = new ArrayList<>();
+
+        List<Setting> menuSettings = settingRepository.findByCategory(SettingCategory.MENUS);
+        settings.addAll(menuSettings);
+
+        return new MenusSettingBag(settings);
+
+    }
+
     public void saveAll(Iterable<Setting> settings){
         settingRepository.saveAll(settings);
     }
@@ -49,6 +59,10 @@ public class SettingService {
 
     public List<Setting> getPaymentSettings() {
         return settingRepository.findByCategory(SettingCategory.PAYMENT);
+    }
+
+    public List<Setting> getMenusSettings(){
+        return settingRepository.findByCategory(SettingCategory.MENUS);
     }
 
 }

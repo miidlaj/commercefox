@@ -47,6 +47,7 @@ public class MainController {
 
 		List<Banner> listBanners = bannerService.getAllBanners();
 
+		Banner fullWidthBanner = bannerService.getFullWidthBanner();
 
 		float estimatedPriceTotal = 0.0F;
 		int numberofItem = 0;
@@ -68,6 +69,7 @@ public class MainController {
 		model.addAttribute("bigDealCategory",bigDealCategory);
 		model.addAttribute("listNoParentCategories",listNoParentCategories);
 		model.addAttribute("listBanners",listBanners);
+		model.addAttribute("fullWidthBanner",fullWidthBanner);
 
 		return "index";
 	}
