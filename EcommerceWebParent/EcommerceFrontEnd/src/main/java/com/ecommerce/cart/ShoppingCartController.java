@@ -40,9 +40,9 @@ public class ShoppingCartController {
             estimatedTotal += Item.getSubtotal();
             estimatedPriceTotal += Item.getPriceSubTotal();
 
-//            if (Integer.parseInt(Item.getProduct().getStock()) > 0 || Item.getProduct().isInStock() == false){
-//                isCartIsUpdatedByStock = false;
-//            }
+            if (Item.getQuantity() <= 0 || Item.getProduct().isInStock() == false){
+                isCartIsUpdatedByStock = false;
+            }
         }
 
         Address defaultAddress = addressService.getDefaultAddress(customer);
