@@ -64,7 +64,7 @@ public class ShoppingCartController {
         model.addAttribute("isCartIsUpdatedByStock", isCartIsUpdatedByStock);
 
 
-        return "/cart";
+        return "cart";
     }
 
     private Customer getAuthenticatedCustomer(HttpServletRequest request) {
