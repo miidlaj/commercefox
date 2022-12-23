@@ -26,9 +26,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven BackEnd
-      run: mvn -B package --file EcommerceWebParent/EcommerceBackEnd/pom.xml
-    - name: Build with Maven FrontEnd
-      run: mvn -B package --file EcommerceWebParent/EcommerceFrontEnd/pom.xml
+      run: mvn -B package --file pom.xml
+    #- name: Build with Maven FrontEnd
+      #run: mvn -B package --file EcommerceWebParent/EcommerceFrontEnd/pom.xml
     - name: Terminate Port 8080
       run: sudo kill -9 $(sudo lsof -t -i:8080) &
     - name: Terminate Port 4500
